@@ -6,11 +6,14 @@
 	<Header />
 	<div class="car-container">
 		<h1 class="car-container__name">Tempest</h1>
-		<button class="car-container__order-button">Order Now</button>
-		<div class="car-container__specs">
-			<div class="specs__torque">
-				<p>3.8 s</p>
-				<p>0-100 kmh</p>
+
+		<div class="car-container__info">
+			<button class="car-container__order-button">Order Now</button>
+			<div class="car-container__specs">
+				<div class="specs__torque">
+					<p>3.8 s</p>
+					<p>0-100 kmh</p>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -20,10 +23,6 @@
 import Header from "./../components/Header.vue";
 
 export default {
-	components: {
-		Header
-	},
-
 	data() {
 		return {
 			loaded: false
@@ -45,15 +44,8 @@ export default {
 	}
 }
 </script>
-<style scoped>
-	#background-video {
-		position: fixed;
-		right: 0;
-		bottom: 0;
-		min-width: 100%;
-		min-height: 100%;
-		z-index: -1;
-	}
+<style>
+	
 
 	.car-container {
 		width: 100%;
@@ -61,11 +53,14 @@ export default {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-around;
 	}
 
+	/* .car-container__info {} */
+
+
 	.car-container__name {
-		color: white;
+		color: var(--foreground);
 	}
 
 	.car-container__order-button {
@@ -74,10 +69,23 @@ export default {
 		font-size: 1.2rem;
 		font-style: normal;
 
-		color: white;
+		color: var(--foreground);
 		background: transparent;
-		outline: 0.3rem solid white;
+		outline: 0.3rem solid var(--foreground);
 		border-radius: 1rem;
+	}
+
+	.car-container__specs {
+		height: 100%;
+	}
+
+	#background-video {
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		min-width: 100%;
+		min-height: 100%;
+		z-index: -1;
 	}
 </style>
 

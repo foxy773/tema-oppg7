@@ -1,7 +1,7 @@
 :root {
-	--background: white;
-	--foreground: black;
+	--background: black;
+	--foreground: white;
 	
-	--font-family: "Arial";
+	--font-family: "Roboto";
 	--font-size: 20px;
 }
