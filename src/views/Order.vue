@@ -1,5 +1,6 @@
 <template>
   <div class="order">
+    <OrderMenu />
       <div class="order__car">
           
       </div>
@@ -7,8 +8,12 @@
 </template>
 
 <script>
-export default {
+import OrderMenu from "../components/OrderMenu.vue"
 
+export default {
+  components: {
+    OrderMenu
+  }
 }
 </script>
 

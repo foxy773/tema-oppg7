@@ -7,7 +7,7 @@
           <ul class="car-type__selection">
               <li class="selection__item">
                   <button class="item__button">Standard</button>
-              </li class="selection__item">
+              </li>
               <li>
                   <button class="item__button">Performance</button>
               </li>

@@ -1,9 +1,8 @@
 <template>
-	<video autoplay muted loop id="background-video" v-if="!loaded">
+	<video autoplay muted loop id="background-video">
   		<source src="videos/car_homepage.mp4" type="video/mp4">
 	</video>
-	<img class="background-image" v-else src="images/background_car.png" alt="">
-	<Header />
+	<!-- <img class="background-image" src="images/background_car.png" alt=""> -->
 	<div class="car-container">
 		<h1 class="car-container__name">Tempest</h1>
 
@@ -14,14 +13,20 @@
 					<p>3.8 s</p>
 					<p>0-100 kmh</p>
 				</div>
+				<div class="specs__torque">
+					<p>489 km</p>
+					<p>Range (WLTP)</p>
+				</div>
+				<div class="specs__torque">
+					<p>AWD</p>
+					<p>Duel Motor</p>
+				</div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-import Header from "./../components/Header.vue";
-
 export default {
 	data() {
 		return {
@@ -56,7 +61,12 @@ export default {
 		justify-content: space-around;
 	}
 
-	/* .car-container__info {} */
+	.car-container__info {
+		width: 40rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 
 
 	.car-container__name {
@@ -64,20 +74,44 @@ export default {
 	}
 
 	.car-container__order-button {
+		border: none;
 		width: 14rem;
 		/* font-family: robo; */
 		font-size: 1.2rem;
 		font-style: normal;
-
+		text-decoration: none;
 		color: var(--foreground);
 		background: transparent;
 		outline: 0.3rem solid var(--foreground);
 		border-radius: 1rem;
+		padding: 1rem 2rem;
+	}
+
+	.car-container__order-button:hover {
+		background: var(--foreground);
+		color: var(--background);
+		outline: none;
 	}
 
 	.car-container__specs {
+		display: flex;
+		width: 100%;
 		height: 100%;
+		padding: 4rem;
+		justify-content: space-between;
 	}
+
+	.specs__torque {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.specs__torque p:nth-child(2) {
+		padding: 0.3rem 0 0 0;
+		font-size: 0.8rem;
+	}
+
 
 	#background-video {
 		position: fixed;
