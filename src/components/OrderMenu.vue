@@ -44,5 +44,8 @@ export default {
 </script>
 
 <style>
+.order-menu {
+    height: 100%;
+}
 
 </style>
