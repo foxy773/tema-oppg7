@@ -7,7 +7,7 @@
 		<h1 class="car-container__name">Tempest</h1>
 
 		<div class="car-container__info">
-			<button class="car-container__order-button">Order Now</button>
+			<router-link :to="{path: 'order'}"> <button class="car-container__order-button">Order Now</button> </router-link>
 			<div class="car-container__specs">
 				<div class="specs__torque">
 					<p>3.8 s</p>

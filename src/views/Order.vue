@@ -1,13 +1,13 @@
 <template>
   <div class="order">
     <CarShow />
-    <OrderMenu class="menu" :colorArray="colors" />
+    <OrderMenu class="menu" :colorArray="colors" :carTypesArray="carTypes"/>
   </div>
 </template>
 
 <script>
 import OrderMenu from "../components/OrderMenu.vue";
-import CarShow from "../components/CarShow.vue"
+import CarShow from "../components/CarShow.vue";
 
 export default {
   components: {
@@ -18,7 +18,9 @@ export default {
   data(){
     return {
       access_token: null,
-      colors: this.fetchCarData() || []
+      colors: null,
+      carTypes: null,
+      cars: null
     }
   },
 
@@ -43,6 +45,8 @@ export default {
         const results = await res.json();
         const final = results.result
         this.colors = final.colors
+        this.carTypes = final.cartypes
+        console.log(this.carTypes)
       }
     }
 }    

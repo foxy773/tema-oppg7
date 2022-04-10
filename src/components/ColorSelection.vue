@@ -32,7 +32,7 @@ export default {
 }
 
 .selection__item:hover {
-    border: 0.25rem dashed rgb(17, 223, 127);
+    border: 0.25rem dashed var(--highlight);
 }
 
 /* #color-selected {

@@ -4,44 +4,41 @@
           <h1>Tempest</h1>
       </div>
       <div class="order-menu__car-type">
-          <ul class="car-type__selection">
-              <li class="selection__item car-type">
-                  <button class="item__button">Standard</button>
-              </li>
-              <li class="selection__item car-type">
-                  <button class="item__button">Performance</button>
-              </li>
-              <li class="selection__item car-type">
-                  <button class="item__button">Luxury</button>
-              </li>
-          </ul>
+          <CarTypeSelection :carTypesArray="carTypesArray" />
       </div>
           <div class="order-menu__car-color">
               <div class="car-color__title">
-                  <h2>Color</h2>
+                  <h2>Paints</h2>
               </div>
                   <ColorSelection :colorArray="colorArray" />
       </div>
       <div class="order-menu__car-features">
-          <ul class="car-features__selection">
-              <li class="selection__item"></li>
-              <li class="selection__item"></li>
-              <li class="selection__item"></li>
-          </ul>
+          <div class="car-features__title">
+              <h2>Extras</h2>
+              </div>
+
+            <ul class="car-features__selection">
+              <li class="selection__item"><button class="item__button">test1</button></li>
+              <li class="selection__item"><button class="item__button">test2</button></li>
+              <li class="selection__item"><button class="item__button">test3</button></li>
+            </ul>
       </div>
   </div>
 </template>
 
 <script>
 import ColorSelection from "./../components/ColorSelection.vue"
+import CarTypeSelection from "./../components/CarTypeSelection.vue"
 
 export default {
     components: {
         ColorSelection,
+        CarTypeSelection
     },
 
     props: {
 	    colorArray: Array,
+        carTypesArray: Array
 	},
     data() {
         return {
@@ -65,11 +62,10 @@ export default {
 
 .order-menu__car-type {
     width: 100%;
-
+    padding: 0 0 4rem 0;
 }
 
-.car-type__selection {
-    width: 100%;
+.car-type__selection, .car-features__selection {
     height: 11rem;
     display: flex;
     flex-direction: column;
@@ -95,23 +91,21 @@ export default {
 }
 
 .item__button:hover {
-    border: 0.25rem dashed rgb(229, 255, 0);
+    border: 0.25rem dashed var(--highlight);
     background: var(--background);
-    color: rgb(229, 255, 0);
+    color: var(--highlight);
 }
 
-.car-color__title, .order-menu__car-name {
+.car-color__title, .order-menu__car-name, .car-features__title {
     padding: 1rem 0;
-}
-
-.car-color__title{
     align-self: center;
 }
 
-.order-menu__car-color {
+.order-menu__car-color, .order-menu__car-features {
     display: flex;
     flex-direction: column;
     width: 100%;
+    padding: 0 0 4rem 0;
 }
 
 .selection__item > img {

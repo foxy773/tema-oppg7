@@ -1,6 +1,7 @@
 :root {
 	--background: black;
 	--foreground: white;
+	--highlight: rgb(229, 255, 0);
 	
 	--font-family: "Roboto";
 	--font-size: 20px;
