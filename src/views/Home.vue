@@ -1,8 +1,5 @@
 <template>
-	<video autoplay muted loop id="background-video">
-  		<source src="videos/car_homepage.mp4" type="video/mp4">
-	</video>
-	<!-- <img class="background-image" src="images/background_car.png" alt=""> -->
+	<img id="background-image" src="images/bothCars.png">
 	<div class="car-container">
 		<h1 class="car-container__name">Tempest</h1>
 
@@ -113,7 +110,9 @@ export default {
 	}
 
 
-	#background-video {
+	#background-image {
+		width: 100%;
+		height: auto;
 		position: fixed;
 		right: 0;
 		bottom: 0;
