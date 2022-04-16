@@ -1,26 +1,50 @@
 <template>
-	<video autoplay muted loop id="background-video">
-  		<source src="https://youtu.be/Z_YacdE9TXU" type="video/mp4">
+	<video v-if="getSlug() === 'tempest'" autoplay muted loop id="background-video">
+  		<source src="videos/car_homepage.mp4" type="video/mp4">
+	</video>
+	<video  v-else autoplay muted loop id="background-video">
+  		<source src="videos/Fameux-lowq.mp4" type="video/mp4">
 	</video>
 	<!-- <img class="background-image" src="images/background_car.png" alt=""> -->
-	<div class="car-container">
-		<h1 class="car-container__name">Tempest</h1>
+	<div class="car-container" v-for="icar in car">
+		<h1 class="car-container__name">{{ icar.carName }}</h1>
 
 		<div class="car-container__info">
-			<router-link :to="{path: 'order'}"> <button class="car-container__order-button">Order Now</button> </router-link>
+			<router-link v-if="icar.available" :to="{path: 'order'}"> <button class="car-container__order-button">Order Now</button> </router-link>
+			<h2 v-else>Coming soon</h2>
 			<div class="car-container__specs">
-				<div class="specs__torque">
-					<p>3.8 s</p>
-					<p>0-100 kmh</p>
+				<div class="specs__container" v-for="specs in icar.carFeatures">
+					<img :src="`${specs.feature.featureIcon.asset.url}`" class="container__image" alt="">
+					<div class="container__info">
+					<p>{{ specs.topSpecPerf }}</p>
+					<p>{{ specs.carFeatureName }}</p>
+					</div>
 				</div>
-				<div class="specs__torque">
+
+				<!-- <div class="specs__container">
+					<img src="images/distance.png" class="container__image" alt="">
+					<div class="container__info">
 					<p>489 km</p>
 					<p>Range (WLTP)</p>
-				</div>
-				<div class="specs__torque">
+					</div>
+				</div> -->
+				<!-- <div class="specs__torque">
+					<p>489 km</p>
+					<p>Range (WLTP)</p>
+				</div> -->
+
+				<!-- <div class="specs__container">
+					<img src="images/car-repair.png" class="container__image" alt="">
+					<div class="container__info">
 					<p>AWD</p>
 					<p>Duel Motor</p>
-				</div>
+					</div>
+				</div> -->
+				<!-- <div class="specs__torque">
+
+					<p>AWD</p>
+					<p>Duel Motor</p>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -28,6 +52,10 @@
 
 <script>
 export default {
+	props: {
+	    car: Array
+	},
+
 	data() {
 		return {
 			loaded: false
@@ -35,12 +63,12 @@ export default {
 	},
 
 	async created() {
-		this.checkIfVideoLoaded()
+		
 	},
 
 	methods: {
-		checkIfVideoLoaded() {
-			
+		getSlug() {
+			return this.$route.params.carPageSlug
 		}
 	},
 
@@ -49,7 +77,7 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 	
 
 	.car-container {
@@ -62,7 +90,7 @@ export default {
 	}
 
 	.car-container__info {
-		width: 40rem;
+		width: 60%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -96,18 +124,33 @@ export default {
 	.car-container__specs {
 		display: flex;
 		width: 100%;
-		height: 100%;
-		padding: 4rem;
-		justify-content: space-between;
+		height: 10rem;
+		padding: 1rem;
+		align-items: center;
+		justify-content: center;
 	}
 
-	.specs__torque {
+	.specs__container {
+		display: flex;
+		justify-content: center;
+		height: 50%;
+		width: 50%;
+	}
+
+	.container__info {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
 	}
 
-	.specs__torque p:nth-child(2) {
+	.container__image {
+		height: 100%;
+		width: auto;
+		padding: 0.5rem;
+	}
+
+	.container__info p:nth-child(2) {
 		padding: 0.3rem 0 0 0;
 		font-size: 0.8rem;
 	}

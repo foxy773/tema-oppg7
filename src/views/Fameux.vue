@@ -1,8 +1,8 @@
 <template>
-	<video autoplay muted loop id="background-video">
+	<!-- <video autoplay muted loop id="background-video">
   		<source src="videos/Fameux-lowq.mp4" type="video/mp4">
 	</video>
-	<!-- <img class="background-image" src="images/background_car.png" alt=""> -->
+	 <img class="background-image" src="images/background_car.png" alt="">
 	<div class="car-container">
 		<h1 class="car-container__name">Tempest</h1>
 
@@ -23,7 +23,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </template>
 
 <script>
@@ -49,7 +49,7 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 	
 
 	.car-container {

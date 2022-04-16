@@ -7,7 +7,8 @@ export default {
             title: "Car Type Name",
             name: "cartypename",
             type: "string"
-        }/* ,
+        }
+        /* ,
         {
             title: "Color image",
             name: "colorImage",

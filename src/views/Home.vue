@@ -1,24 +1,17 @@
 <template>
 	<img id="background-image" src="images/bothCars.png">
 	<div class="car-container">
-		<h1 class="car-container__name">Tempest</h1>
+		<h1 class="car-container__name">The peak of posh</h1>
 
 		<div class="car-container__info">
-			<router-link :to="{path: 'order'}"> <button class="car-container__order-button">Order Now</button> </router-link>
-			<div class="car-container__specs">
-				<div class="specs__torque">
-					<p>3.8 s</p>
-					<p>0-100 kmh</p>
-				</div>
-				<div class="specs__torque">
-					<p>489 km</p>
-					<p>Range (WLTP)</p>
-				</div>
-				<div class="specs__torque">
-					<p>AWD</p>
-					<p>Duel Motor</p>
-				</div>
+			<div class="info__car" v-for="car in carsFromStore">
+				<p>A car all about comfort, luxury, and convenience in an sporty family sedan.</p>
+			<router-link id="router-link" :to="`/${car.slug.current}`"> <button class="car-container__order-button">{{ car.carName }}</button></router-link>
 			</div>
+			<!-- <div class="info__car">
+				<p class="car__text">A car all about style, luxury, and comfort in an ultra high performance buildt for the VIP and rich.</p>
+			<router-link id="router-link" :to="{name: 'carPageView', params:{ slug:'tempest' }}"> <button class="car-container__order-button">Tempest</button></router-link>
+			</div> -->
 		</div>
 	</div>
 </template>
@@ -31,14 +24,18 @@ export default {
 		}
 	},
 
+	computed: {
+			carsFromStore() {
+				return this.$store.getters.getCars
+			},
+		},
+
 	async created() {
-		this.checkIfVideoLoaded()
+		
 	},
 
 	methods: {
-		checkIfVideoLoaded() {
-			
-		}
+		
 	},
 
 	mounted() {
@@ -46,8 +43,7 @@ export default {
 	}
 }
 </script>
-<style>
-	
+<style scoped>
 
 	.car-container {
 		width: 100%;
@@ -59,15 +55,19 @@ export default {
 	}
 
 	.car-container__info {
-		width: 40rem;
+		height: 30%;
+		width: 60%;
 		display: flex;
-		flex-direction: column;
-		align-items: center;
+		flex-direction: row;
+		justify-content: space-between;
 	}
 
 
 	.car-container__name {
 		color: var(--foreground);
+		background: rgba(0, 0, 0, 0.7);
+		padding: 1rem 2rem;
+		border-radius: 4rem;
 	}
 
 	.car-container__order-button {
@@ -98,6 +98,20 @@ export default {
 		justify-content: space-between;
 	}
 
+	.info__car {
+		height: 80%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 1rem;
+		align-items: center;
+		text-align: center;
+	}
+
+	.info__car > p {
+		padding: 1rem;
+	}
+
 	.specs__torque {
 		display: flex;
 		flex-direction: column;
@@ -119,6 +133,11 @@ export default {
 		min-width: 100%;
 		min-height: 100%;
 		z-index: -1;
+	}
+
+	#router-link {
+		display: inline-block;
+		width: 14rem;
 	}
 </style>
 

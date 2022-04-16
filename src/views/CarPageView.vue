@@ -1,10 +1,11 @@
 <template>
+	<CarDisplayTemplate :car="filterSlug()"/>
 <!-- <iframe id="background-video" src="https://www.youtube.com/embed/Z_YacdE9TXU?autoplay=1&controls=0&loop=1" frameborder="0"></iframe> -->
-	<video autoplay muted loop id="background-video">
+	<!-- <video autoplay muted loop id="background-video">
   		<source src="videos/car_homepage.mp4" type="video/mp4">
-	</video>
+	</video> -->
 	<!-- <img class="background-image" src="images/background_car.png" alt=""> -->
-	<div class="car-container">
+	<!-- <div class="car-container">
 		<h1 class="car-container__name">Tempest</h1>
 
 		<div class="car-container__info">
@@ -24,24 +25,35 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </template>
 
 <script>
+import CarDisplayTemplate from "../components/CarDisplayTemplate.vue"
+
 export default {
+	components: {
+    	CarDisplayTemplate
+  },
 	data() {
 		return {
-			loaded: false
+			car: []
 		}
 	},
 
 	async created() {
-		this.checkIfVideoLoaded()
+		this.filterSlug()
 	},
 
 	methods: {
-		checkIfVideoLoaded() {
-			
+		getSlug() {
+			return this.$route.params.carPageSlug
+		},
+
+		filterSlug() {
+			return this.$store.getters["getCars"].filter(slug => {
+				return slug.slug.current === this.getSlug()
+			})
 		}
 	},
 
@@ -50,7 +62,7 @@ export default {
 	}
 }
 </script>
-<style>
+<style scoped>
 	
 
 	.car-container {

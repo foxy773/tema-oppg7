@@ -3,8 +3,7 @@
 		<router-link :to="{name: 'home'}"><img class="header__image" src="images/ASTRA-logo-white.png" alt=""></router-link>
 		<div class="header__navigation">
 			<ul class="navigation__list">
-				<router-link :to="{name: 'tempest'}"><li class="list__item"><button class="nav-button">Tempest</button></li></router-link>
-				<router-link :to="{name: 'fameux'}"><li class="list__item"><button class="nav-button">Fameux</button></li></router-link>
+				<router-link v-for="car in carsFromStore" :to="`/${car.slug.current}`"><li class="list__item"><button class="nav-button">{{ car.carName }}</button></li></router-link>
 			</ul>
 		</div>
 	</div>
@@ -12,7 +11,17 @@
 
 <script>
 export default {
+	data() {
+		return {
+			
+		}
+	},
 
+	computed: {
+			carsFromStore() {
+				return this.$store.getters.getCars
+			}
+		},
 }
 </script>
 
@@ -32,15 +41,15 @@ export default {
 	}
 
 	.header__navigation {
-		width: 65%;
+		width: 100%;
 		height: 100%;
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-end;
 	}
 
 	.navigation__list {
-		width: 20rem;
+		width: 16rem;
 		display: flex;
 		list-style: none;
 		justify-content: space-between;

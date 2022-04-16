@@ -7,7 +7,10 @@ body {
 }
 
 button {
-	cursor: pointer;
+		border: none;
+		/* font-family: robo; */
+		
+		cursor: pointer;
 }
 
 #app {
