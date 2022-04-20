@@ -30,6 +30,16 @@ export default {
             }
         },
         {
+            title: "Car Description",
+            name: "carDescription",
+            type: "text"
+        },
+        {
+            title: "Default Showcar",
+            name: "showImage",
+            type: "image"
+        },
+        {
             title: "Types of cars",
             name: "typesOfCars",
             type: "array",
@@ -39,7 +49,7 @@ export default {
                 type: "object",
                 fields: [
                     {
-                        title: "Car Type Name",
+                        title: "Car Model Name",
                         name: "carTypeName",
                         type: "string"
                     },
@@ -48,93 +58,95 @@ export default {
                         name: "color",
                         type: "object",
                         fields: [
-                        {
-                            title: "Color",
-                            name: "color",
-                            type: "reference",
-                            to: [{
-                                type: "colors"
-                            }]
-                        },
-                        {
-                            title: "price $",
-                            name: "colorPrice",
-                            type: "number"
-                        }
-                    ]
-                },
-                {
-                    title: "Models",
-                    name: "models",
-                    type: "object",
-                    fields: [
-                        {
-                            title: "Model Types",
-                            name: "modelTypes",
-                            type: "reference",
-                            to: [{
-                                type: "cartypes"
-                            }]
-                        },
-                        {
-                            title: "Price $",
-                            name: "carTypePrice",
-                            type: "number"
-                        }
-                    ]
-                },
-                {
-                    title: "Car image",
-                    name: "carImage",
-                    type: "image"
-                }
-                ]
-            }]
-        },
-                {
-                    title: "Car features",
-                    name: "carFeatures",
-                    type: "array",
-                    of: [
-                        {
-                        title: "Car feature",
-                        name: "carFeature",
-                        type: "object",
-                        fields: [
                             {
-                                title: "Feature name",
-                                name: "carFeatureName",
-                                type: "string"
-                            },
-                            {
-                                title: "Feature",
-                                name: "feature",
+                                title: "Color",
+                                name: "color",
                                 type: "reference",
                                 to: [{
-                                    type: "features"
+                                    type: "colors"
                                 }]
                             },
                             {
-                                title: "Top Specific performance numbers",
-                                name: "topSpecPerf",
-                                type: "string",
+                                title: "Paint Price $",
+                                name: "colorPrice",
+                                type: "number"
                             }
                         ]
-                    }]
-                },
-        /* {
-            title: "Color",
-            name: "color",
-            type: "reference",
-            to: [{
-                type: "colors"
+                    },
+                    {
+                        title: "Models",
+                        name: "models",
+                        type: "object",
+                        fields: [
+                            {
+                                title: "Model Types",
+                                name: "modelTypes",
+                                type: "reference",
+                                to: [{
+                                    type: "cartypes"
+                                }]
+                            },
+                            {
+                                title: "Model Range (WLTP) (km)",
+                                name: "carRange",
+                                type: "number"
+                            },
+                            {
+                                title: "Model Top Speed (kmh)",
+                                name: "carTopSpeed",
+                                type: "number"
+                            },
+                            {
+                                title: "0-100 (seconds) (kmh)",
+                                name: "carTorque",
+                                type: "number"
+                            },
+                            {
+                                title: "Model Price $",
+                                name: "carTypePrice",
+                                type: "number"
+                            }
+                        ]
+                    },
+                    {
+                        title: "Car image",
+                        name: "carImage",
+                        type: "image"
+                    }
+                ]
             }]
         },
         {
-            title: "Car image",
-            name: "carImage",
-            type: "image"
-        } */
+            title: "Car features",
+            name: "carFeatures",
+            type: "array",
+            of: [
+                {
+                    title: "Car feature",
+                    name: "carFeature",
+                    type: "object",
+                    fields: [
+                        {
+                            title: "Feature name",
+                            name: "carFeatureName",
+                            type: "string"
+                        },
+                        {
+                            title: "Feature",
+                            name: "feature",
+                            type: "reference",
+                            to: [{
+                                type: "features"
+                            }]
+                        },
+                        {
+                            title: "Top Specific performance numbers",
+                            name: "topSpecPerf",
+                            type: "string",
+                        }
+                    ]
+                }]
+        },
         {
             title: "Starts at price $",
             name: "price",

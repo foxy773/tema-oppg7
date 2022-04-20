@@ -1,20 +1,15 @@
 <template>
 	<ul class="car-color__selection">
-        <li class="selection__item" :class="{colorSelected: selected}" v-for="color in colorArray" id="color-selected"><img :src="color.colorImage.asset.url" alt=""></li>
+        <li class="selection__item" :class="{colorSelected: selected}" v-for="color in colors" id="color-selected"><img :src="color.colorImage.asset.url" alt=""></li>
     </ul>
 </template>
 
 <script>
 export default {
-    props: {
-	    colorArray: Array,
-	},
 
-	data() {
-		return {
-			
-		}
-	},
+    props: {
+	    colors: Array
+	}
 }
 </script>
 

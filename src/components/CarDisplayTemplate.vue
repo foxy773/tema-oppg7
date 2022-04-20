@@ -10,14 +10,17 @@
 		<h1 class="car-container__name">{{ icar.carName }}</h1>
 
 		<div class="car-container__info">
-			<router-link v-if="icar.available" :to="{path: 'order'}"> <button class="car-container__order-button">Order Now</button> </router-link>
+			<router-link v-if="icar.available" :to="{name: 'order'}"> <button class="car-container__order-button">Order Now</button> </router-link>
 			<h2 v-else>Coming soon</h2>
+
 			<div class="car-container__specs">
 				<div class="specs__container" v-for="specs in icar.carFeatures">
+
 					<img :src="`${specs.feature.featureIcon.asset.url}`" class="container__image" alt="">
 					<div class="container__info">
-					<p>{{ specs.topSpecPerf }}</p>
-					<p>{{ specs.carFeatureName }}</p>
+
+						<p>{{ specs.topSpecPerf }}</p>
+						<p>{{ specs.carFeatureName }}</p>
 					</div>
 				</div>
 

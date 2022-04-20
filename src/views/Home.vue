@@ -5,7 +5,7 @@
 
 		<div class="car-container__info">
 			<div class="info__car" v-for="car in carsFromStore">
-				<p>A car all about comfort, luxury, and convenience in an sporty family sedan.</p>
+				<p>{{ car.carDescription }}</p>
 			<router-link id="router-link" :to="`/${car.slug.current}`"> <button class="car-container__order-button">{{ car.carName }}</button></router-link>
 			</div>
 			<!-- <div class="info__car">

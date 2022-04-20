@@ -1,16 +1,16 @@
 <template>
   <div class="order-menu">
       <div class="order-menu__car-name">
-          <h1>Tempest</h1>
+          <h1>{{ car.carName }}</h1>
       </div>
       <div class="order-menu__car-type">
-          <CarTypeSelection :carTypesArray="carTypesArray" />
+          <CarTypeSelection  />
       </div>
           <div class="order-menu__car-color">
               <div class="car-color__title">
                   <h2>Paints</h2>
               </div>
-                  <ColorSelection :colorArray="colorArray" />
+                  <ColorSelection :colors="colors" />
       </div>
       <div class="order-menu__car-features">
           <div class="car-features__title">
@@ -37,12 +37,29 @@ export default {
     },
 
     props: {
-	    colorArray: Array,
-        carTypesArray: Array
+	    car: {
+            type: Object
+        }
 	},
+
     data() {
-        return {
-            
+		return {
+			colors: []
+		}
+	},
+
+    created() {
+        this.getColors()
+    },
+
+    methods: {
+        getColors() {
+            const models = this.car.typesOfCars
+            let colors = this.colors
+            models.forEach((model)=> {
+                colors.push(model.color.color)
+                console.log(colors, "colors")
+            })
         }
     }
 }

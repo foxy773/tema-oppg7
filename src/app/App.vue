@@ -6,7 +6,6 @@
 </template>
 <script>
 import Header from './../components/Header.vue';
-
 import sanityClient from "@sanity/client";
 
 const sanity = sanityClient({
@@ -16,7 +15,12 @@ const sanity = sanityClient({
 	useCDN: false
 })
 
-const query = `{
+const path = "./../../public/groq/query.groq";
+const groq = await fetch(path);
+const query = await groq.text();
+
+
+/* const query = `{
   "cars": * [_type=="cars"]{
   available,
   slug {
@@ -77,7 +81,7 @@ carFeatures[]{
 }
 
 
-`;
+`; */
 
 const params = "";
 
@@ -109,8 +113,8 @@ export default {
 			this.sendDataToStore()
 		},
 
-		sendDataToStore() {
-			this.$store.state.cars.cars = this.allData.cars
+		async sendDataToStore() {
+			this.$store.state.cars.cars = await this.allData.cars
 			this.$store.state.carTypes.carTypes = this.allData
 			console.log(this.$store.state.cars.cars)
 		}

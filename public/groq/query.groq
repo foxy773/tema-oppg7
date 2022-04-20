@@ -1,0 +1,69 @@
+{
+   "cars": * [_type == "cars"] {
+      available,
+      slug {
+         current
+      },
+
+      carName,
+      modelYear,
+      carDescription,
+      showImage {
+         asset -> {
+            url
+         }
+      },
+      price,
+      typesOfCars[] {
+         carTypeName,
+         color {
+            color -> {
+               colorName,
+               colorImage {
+                  asset -> {
+                     url
+                  }
+               }
+            }
+         },
+         models {
+            modelTypes -> {
+               cartypename
+            },
+            carRange,
+            carTopSpeed,
+            carTorque,
+            carTypePrice
+         },
+         carImage {
+            asset -> {
+               url
+            }
+         }
+      },
+      carFeatures[] {
+         carFeatureName,
+         feature -> {
+            featureIcon {
+               asset -> {
+                  url
+               }
+            }
+         },
+         topSpecPerf
+      }
+
+   },
+   "colors": * [_type == "colors"] {
+      colorName,
+      colorImage {
+         asset -> {
+            url
+         },
+      },
+
+   },
+   "cartypes": * [_type == "cartypes"] {
+      cartypename
+   }
+}

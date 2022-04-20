@@ -1,11 +1,15 @@
 <template>
 	<div class="car-show">
-        <img class="show__image" src="./../../public/images/black-car.png" alt="">
+        <img class="show__image" :src="`${car.showImage.asset.url}`" alt="">
 	</div>
 </template>
 
 <script>
 export default {
+
+    props: {
+	    car: Object
+	}
 
 }
 </script>
