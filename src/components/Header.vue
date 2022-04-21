@@ -1,6 +1,6 @@
 <template>
 	<div class="header">
-		<router-link :to="{name: 'home'}"><img class="header__image" src="images/ASTRA-logo-white.png" alt=""></router-link>
+		<router-link :to="{name: 'home'}"><img class="header__image" src="/images/ASTRA-logo-white.png" alt=""></router-link>
 		<div class="header__navigation">
 			<ul class="navigation__list">
 				<router-link v-for="car in carsFromStore" :to="`/${car.slug.current}`"><li class="list__item"><button class="nav-button">{{ car.carName }}</button></li></router-link>

@@ -19,6 +19,8 @@ export default {
     return {
       cars: null,
       car: null,
+      selectedModel: null,
+      selectedColor: null,
       selectedCar: null
     }
   },

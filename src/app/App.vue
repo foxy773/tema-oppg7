@@ -19,70 +19,6 @@ const path = "./../../public/groq/query.groq";
 const groq = await fetch(path);
 const query = await groq.text();
 
-
-/* const query = `{
-  "cars": * [_type=="cars"]{
-  available,
-  slug {
- current
-  },
-
-  carName,
-  modelYear,
-  price,
-  typesOfCars[]{
-    carTypeName,
-    color {
-    color -> {
-    colorName,
-    colorImage {
-    asset -> {
-    url
-  }
-  }
-  }
-  },
-models {
-  modelTypes -> {
-  cartypename
-}
-},
-carImage {
-  asset -> {
-  url
-}
-}
-  },
-carFeatures[]{
-  carFeatureName,
-  feature -> {
-  featureIcon {
-  asset -> {
-  url
-}
-}
-},
-  topSpecPerf
-}
-  
-},
- "colors": * [_type=="colors"]{
-   colorName,
-   colorImage {
-   asset -> {
-   url
- },
- },
-
- },
-"cartypes": * [_type=="cartypes"]{
-  cartypename
-}
-}
-
-
-`; */
-
 const params = "";
 
 export default {
@@ -99,11 +35,12 @@ export default {
 	},
 
 	mounted() {
-		this.fetchDataAndStore()
+		
 	},
 
 	created() {
-
+		console.log("created")
+		this.fetchDataAndStore()
 	},
 
 	methods: {

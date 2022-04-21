@@ -1,8 +1,24 @@
 <template>
-  <div class="order-menu">
-      <div class="order-menu__car-name">
-          <h1>{{ car.carName }}</h1>
-      </div>
+    <div class="order-menu">
+        <div class="order-menu__car-name">
+            <h1>{{ car.carName }}</h1>
+        </div>
+        <div class="order-menu__car-specs">
+            <ul class="car-specs__list">
+                <li class="list__spec">
+                    <p>{{car.typesOfCars[0].models.carRange}}<span>km</span></p>
+                    <p>Range</p>
+                </li>
+                <li class="list__spec">
+                    <p>{{car.typesOfCars[0].models.carTopSpeed}}<span>km/h</span></p>
+                    <p>Top Speed</p>
+                </li>
+                <li class="list__spec">
+                    <p>{{car.typesOfCars[0].models.carTorque}}<span>s</span></p>
+                    <p>0-100 km/h</p>
+                </li>
+            </ul>
+        </div>
       <div class="order-menu__car-type">
           <CarTypeSelection  />
       </div>
@@ -94,6 +110,36 @@ export default {
     width: 100%;
     height: 3rem;
 }
+
+.order-menu__car-specs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.car-specs__list {
+    width: 100%;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+.list__spec {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.list__spec > p:nth-child(2) {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.list__spec p span {
+    font-size: 1rem;
+}
+
+
 
 .item__button {
     width: 100%;
