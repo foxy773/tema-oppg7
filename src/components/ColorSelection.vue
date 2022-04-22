@@ -13,7 +13,7 @@
     </ul>
 </template>
 
-<script>
+<script scoped>
 export default {
     data() {
         return {
@@ -34,14 +34,15 @@ export default {
     },
 
     computed: {
-        
-
+       /*  sendCustomizedCar() {
+        store.customizedCar.commit("changeColor", this.colorSelected)
+      } */
     },
 
     methods: {
         selectColor(color) {
             this.colorSelected = color
-            /* console.log(e.target.id) */
+            this.$store.commit("changeColor", color)
         }
     }
 
@@ -53,13 +54,20 @@ export default {
 .car-color__selection {
     width: 100%;
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
+    list-style:none ;
 }
 
-.car-color__selection > .selection__item {
+.selection__item {
     width: 3.5rem;
     height: 3.5rem;
     border: 0.25rem solid white;
+}
+
+.selection__item img {
+    width: auto;
+    height: 100%;
+    user-select: none;
 }
 
 .selection__item:hover {
@@ -69,6 +77,12 @@ export default {
 .selection__item--selected {
     width: 3.5rem;
     height: 3.5rem;
-    border: 0.2rem solid white
+    border: 0.25rem solid var(--highlight);
+}
+
+.selection__item--selected img{
+    width: auto;
+    height: 100%;
+    user-select: none;
 }
 </style>

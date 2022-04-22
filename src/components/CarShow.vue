@@ -1,6 +1,6 @@
 <template>
-	<div class="car-show">
-        <img class="show__image" :src="`${car.showImage.asset.url}`" alt="">
+	<div class="car-show" >
+        <img class="show__image" :src="selectedModel.carImage.asset.url" alt="">
 	</div>
 </template>
 
@@ -8,13 +8,33 @@
 export default {
 
     props: {
-	    car: Object
-	}
+	    selectedModel: Object
+	},
+    data(){
+        return {
+            loaded: true/* ,
+            carObject: this.car */
+        }
+    },
+
+    mounted() {
+        /* this.checkPropForData() */
+    },
+
+    computed: {
+        checkPropForData() {
+            
+        }
+    },
+
+    methods: {
+       
+    }
 
 }
 </script>
 
-<style>
+<style scoped>
 	.car-show {
         display: flex;
         align-items: center;

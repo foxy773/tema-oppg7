@@ -1,32 +1,25 @@
 <template>
 
-		<Header />
-		<RouterView />
+		<Header v-if="this.loaded" />
+		<RouterView v-if="this.loaded" />
+		<div v-else>LOADING</div>
 
 </template>
 <script>
 import Header from './../components/Header.vue';
-import sanityClient from "@sanity/client";
-
-const sanity = sanityClient({
-	projectId: "7q56kn2q",
-	dataset: "production",
-	apiVersion: "2022-03-30",
-	useCDN: false
-})
-
-const path = "./../../public/groq/query.groq";
-const groq = await fetch(path);
-const query = await groq.text();
-
-const params = "";
+import mainMixin from "../mixins/mainMixin.js";
+import query from "../groq/query.groq?raw";
 
 export default {
 	components: {
 		Header
 	},
+
+	mixins: [mainMixin],
+
 	data() {
 		return {
+			loaded: false,
 			allData: [],
 			cars: [],
 			colors: {},
@@ -34,27 +27,26 @@ export default {
 		}
 	},
 
+	computed: {
+		/* checkIfData() {
+			const store = this.$store.getters.getCars
+			if (store.toString().length = 0) {
+				this.loaded = true
+			}
+		} */
+		
+	},
+
 	mounted() {
 		
 	},
 
 	created() {
-		console.log("created")
-		this.fetchDataAndStore()
+		this.fetchDataAndStore(query);
+		
 	},
 
 	methods: {
-		async fetchDataAndStore() {
-			this.allData = await sanity.fetch(query, params);
-			console.log(this.cars)
-			this.sendDataToStore()
-		},
-
-		async sendDataToStore() {
-			this.$store.state.cars.cars = await this.allData.cars
-			this.$store.state.carTypes.carTypes = this.allData
-			console.log(this.$store.state.cars.cars)
-		}
 	}
 }
 </script>

@@ -6,15 +6,15 @@
         <div class="order-menu__car-specs">
             <ul class="car-specs__list">
                 <li class="list__spec">
-                    <p>{{car.typesOfCars[0].models.carRange}}<span>km</span></p>
+                    <p><span class="counter" :data-target="Range"><!-- {{car.typesOfCars[0].models.carRange}} --></span><span>km</span></p>
                     <p>Range</p>
                 </li>
                 <li class="list__spec">
-                    <p>{{car.typesOfCars[0].models.carTopSpeed}}<span>km/h</span></p>
+                    <p><span class="counter" :data-target="TopSpeed"><!-- {{car.typesOfCars[0].models.carTopSpeed}} --></span><span>km/h</span></p>
                     <p>Top Speed</p>
                 </li>
                 <li class="list__spec">
-                    <p>{{car.typesOfCars[0].models.carTorque}}<span>s</span></p>
+                    <p><span class="counter" :data-target="Torque" ><!-- {{car.typesOfCars[0].models.carTorque}} --></span><span>s</span></p>
                     <p>0-100 km/h</p>
                 </li>
             </ul>
@@ -34,9 +34,15 @@
               </div>
 
             <ul class="car-features__selection">
-              <li class="selection__item"><button class="item__button">test1</button></li>
-              <li class="selection__item"><button class="item__button">test2</button></li>
-              <li class="selection__item"><button class="item__button">test3</button></li>
+                <li class="selection__item">
+                    <button class="item__button">test1</button>
+                </li>
+                <li class="selection__item">
+                    <button class="item__button">test2</button>
+                </li>
+                <li class="selection__item">
+                    <button class="item__button">test3</button>
+                </li>
             </ul>
       </div>
   </div>
@@ -60,12 +66,19 @@ export default {
 
     data() {
 		return {
-			colors: []
+			colors: [],
+            Range: this.car.typesOfCars[0].models.carRange,
+            TopSpeed: this.car.typesOfCars[0].models.carTopSpeed,
+            Torque: this.car.typesOfCars[0].models.carTorque
 		}
 	},
 
     created() {
         this.getColors()
+    },
+
+    mounted() {
+        this.setUpCounters()
     },
 
     methods: {
@@ -76,12 +89,32 @@ export default {
                 colors.push(model.color.color)
                 console.log(colors, "colors")
             })
+        },
+
+        setUpCounters() {
+            const counters = document.querySelectorAll(".counter")
+            const speed = 350
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute("data-target")
+                    const count = +counter.innerText;
+                    const increment = (target / speed);
+
+                    if (count < target) {
+                        counter.innerText = (count + increment).toFixed(2)
+                        setTimeout(updateCount, 1)
+                    } else {
+                        counter.innerText = target
+                    }
+                }
+                updateCount()
+            })
         }
     }
 }
 </script>
 
-<style>
+<style scoped>
 .order-menu {
     height: 100%;
     max-height: 100%;
@@ -135,11 +168,9 @@ export default {
     opacity: 0.8;
 }
 
-.list__spec p span {
+.list__spec p:nth-child(2) span {
     font-size: 1rem;
 }
-
-
 
 .item__button {
     width: 100%;

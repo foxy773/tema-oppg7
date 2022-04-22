@@ -110,8 +110,12 @@ export default {
 		display: flex;
 		width: 100%;
 		height: 100%;
-		padding: 4rem;
+		padding: 8rem;
 		justify-content: space-between;
+
+		background-color: black;
+		opacity: 0.5;
+		border-radius: 1rem;
 	}
 
 	.specs__torque {
