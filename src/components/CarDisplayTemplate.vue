@@ -1,9 +1,9 @@
 <template>
 	<video v-if="getSlug() === 'tempest'" autoplay muted loop id="background-video">
-  		<source src="videos/car_homepage.mp4" type="video/mp4">
+  		<source src="../../public/videos/car_homepage.mp4" type="video/mp4">
 	</video>
 	<video  v-else autoplay muted loop id="background-video">
-  		<source src="videos/Fameux-lowq.mp4" type="video/mp4">
+  		<source src="../../public/videos/Fameux-lowq.mp4" type="video/mp4">
 	</video>
 	<!-- <img class="background-image" src="images/background_car.png" alt=""> -->
 	<div class="car-container" v-for="icar in car">
