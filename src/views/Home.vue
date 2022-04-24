@@ -1,5 +1,5 @@
 <template>
-	<img id="background-image" src="images/bothCars.png">
+	<img id="background-image" src="../../public/images/bothCars.png">
 	<div class="car-container">
 		<h1 class="car-container__name">The peak of posh</h1>
 
