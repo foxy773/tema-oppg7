@@ -17,7 +17,7 @@
 export default {
     data() {
         return {
-            colorSelected: null
+            colorSelected: "Black"
         }
     },
 
@@ -26,25 +26,26 @@ export default {
 	},
 
     mounted() {
-
+        
     },
 
     created() {
-
+        this.selectColor(this.colorSelected)
     },
 
     computed: {
-       /*  sendCustomizedCar() {
-        store.customizedCar.commit("changeColor", this.colorSelected)
-      } */
+        /* storeColor() {
+            this.$store.dispatch("changeColor", this.colorSelected)
+            console.log(this.colorSelected)
+        } */
     },
 
     methods: {
-        selectColor(color) {
-            this.colorSelected = color
-            this.$store.commit("changeColor", color)
-        }
+         selectColor(color) {
+            this.colorSelected = color;
+            this.$store.dispatch("changeColor", this.colorSelected)
     }
+}
 
     
 }

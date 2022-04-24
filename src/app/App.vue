@@ -1,13 +1,14 @@
 <template>
 
-		<Header v-if="this.loaded" />
-		<RouterView v-if="this.loaded" />
-		<div v-else>LOADING</div>
+		<Header v-if="checkIfLoaded" />
+		<RouterView v-if="checkIfLoaded" />
+		<div v-if="!checkIfLoaded">LOADING</div>
 
 </template>
 <script>
 import Header from './../components/Header.vue';
-import mainMixin from "../mixins/mainMixin.js";
+/* import mainMixin from "../mixins/mainMixin.js"; */
+import sanity from "../sanity.js"
 import query from "../groq/query.groq?raw";
 
 export default {
@@ -15,19 +16,19 @@ export default {
 		Header
 	},
 
-	mixins: [mainMixin],
+/* 	mixins: [mainMixin], */
 
 	data() {
 		return {
-			loaded: false,
-			allData: [],
-			cars: [],
-			colors: {},
-			carTypes: {}
+			
 		}
 	},
 
 	computed: {
+		checkIfLoaded() {
+			return this.$store.getters.getLoadedState
+		}
+
 		/* checkIfData() {
 			const store = this.$store.getters.getCars
 			if (store.toString().length = 0) {
@@ -41,9 +42,10 @@ export default {
 		
 	},
 
-	created() {
-		this.fetchDataAndStore(query);
-		
+	async created() {
+		const sanityData = await sanity.fetch(query);
+
+		this.$store.dispatch("setUpData", sanityData)
 	},
 
 	methods: {

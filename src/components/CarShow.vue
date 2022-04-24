@@ -1,6 +1,7 @@
 <template>
 	<div class="car-show" >
-        <img class="show__image" :src="selectedModel.carImage.asset.url" alt="">
+        <img v-if="this.checkMenuLoaded" class="show__image" :src="selectedModel.carImage.asset.url" alt="">
+        <h2 v-else>Loading car...</h2>
 	</div>
 </template>
 
@@ -12,18 +13,25 @@ export default {
 	},
     data(){
         return {
-            loaded: true/* ,
-            carObject: this.car */
+            loaded: false
         }
     },
 
     mounted() {
-        /* this.checkPropForData() */
+        /* console.log(selectedModel, "selectedModel") */
     },
 
     computed: {
-        checkPropForData() {
-            
+        getColor() {
+            return this.$store.getters.getSelectedColor
+        },
+
+        checkMenuLoaded() {
+            if (this.getColor === null || this.getColor === undefined) {
+                return false
+            } else {
+                return true
+            }
         }
     },
 

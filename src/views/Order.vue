@@ -1,7 +1,7 @@
 <template>
-  <div class="order" v-if="loaded">
-    <CarShow :selectedModel="updateCar" />
-    <OrderMenu class="menu" :car="currentCars" />
+  <div class="order" v-if="checkIfLoaded">
+    <CarShow :selectedModel="filterShowCar" />
+    <OrderMenu class="menu" :selectedModel="filterCars" />
   </div>
 </template>
 
@@ -18,20 +18,10 @@ export default {
 
   data(){
     return {
-      loaded: false,
-      allCars: null,
       currentCars: null,
       selectedModel: null,
       selectedColor: null,
       /* selectedCar: null */
-    }
-  },
-
-  watch: {
-    selectedModel(newColor, oldColor) {
-      if (newColor !== oldColor) {
-        this.getAllData()
-      }
     }
   },
 
@@ -40,46 +30,20 @@ export default {
     },
 
     async mounted() {
-     await this.getAllData()
+
     },
 
     computed: {
-      /* updateData() {
-        return this.filterShowCar()
-      }, */
+      checkIfLoaded() {
+			  return this.$store.getters.getLoadedState
+		  },
 
-      /* car() {
-        return this.filterAllCarsFromStore()
+      cars() {
+        return this.$store.getters.getCars
       },
 
-      selectedModel() {
-        return this.filterShowCar()
-      }, */
-
-      getColor() {
-        this.selectedColor = this.$store.getters.getCustomizedCar.color
-      },
-
-      updateCar() {
-        return this.filterShowCar()
-      }
-
-      /* allCarsFromStore() {
-				return this.$store.getters.getCars
-			} */
-    },
-
-    methods: {
-      async getAllData() {
-        this.allCars = await this.$store.getters.getCars
-        this.currentCars = this.filterAllCarsFromStore()
-        this.selectedColor = await this.$store.getters.getCustomizedCar.color
-        this.selectedModel = this.filterShowCar()
-        this.loaded = true
-      },
-
-      filterAllCarsFromStore() {
-        const allCars = this.allCars
+      filterCars() {
+        const allCars = this.cars
         const slug = this.getSlug()
         console.log(allCars, "allCars")
         const car = allCars.find(car => car.slug.current === slug);
@@ -88,14 +52,22 @@ export default {
       },
 
       filterShowCar() {
-        const car = this.currentCars
-        const models = car.typesOfCars
+        const car = this.filterCars
+        const models = this.filterCars.typesOfCars
         console.log(models)
         console.log(car, "carsss")
-        const color = this.selectedColor
+        const color = this.getSelectedColor
         console.log(color, "color")
         return models.find(model => model.color.color.colorName === color)
       },
+
+      getSelectedColor() {
+        return this.$store.getters.getSelectedColor
+      }
+
+    },
+
+    methods: {
 
       getSlug() {
 			  return this.$route.params.carPageSlug

@@ -23,31 +23,6 @@
 						<p>{{ specs.carFeatureName }}</p>
 					</div>
 				</div>
-
-				<!-- <div class="specs__container">
-					<img src="images/distance.png" class="container__image" alt="">
-					<div class="container__info">
-					<p>489 km</p>
-					<p>Range (WLTP)</p>
-					</div>
-				</div> -->
-				<!-- <div class="specs__torque">
-					<p>489 km</p>
-					<p>Range (WLTP)</p>
-				</div> -->
-
-				<!-- <div class="specs__container">
-					<img src="images/car-repair.png" class="container__image" alt="">
-					<div class="container__info">
-					<p>AWD</p>
-					<p>Duel Motor</p>
-					</div>
-				</div> -->
-				<!-- <div class="specs__torque">
-
-					<p>AWD</p>
-					<p>Duel Motor</p>
-				</div> -->
 			</div>
 		</div>
 	</div>
@@ -66,6 +41,10 @@ export default {
 	},
 
 	async created() {
+		
+	},
+
+	computed: {
 		
 	},
 

@@ -8,10 +8,6 @@
 				<p>{{ car.carDescription }}</p>
 			<router-link id="router-link" :to="`/${car.slug.current}`"> <button class="car-container__order-button">{{ car.carName }}</button></router-link>
 			</div>
-			<!-- <div class="info__car">
-				<p class="car__text">A car all about style, luxury, and comfort in an ultra high performance buildt for the VIP and rich.</p>
-			<router-link id="router-link" :to="{name: 'carPageView', params:{ slug:'tempest' }}"> <button class="car-container__order-button">Tempest</button></router-link>
-			</div> -->
 		</div>
 	</div>
 </template>

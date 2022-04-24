@@ -14,9 +14,9 @@ export default {
         }
     },
 
-    getters: {
+    /* getters: {
         getCarTypes(state) {
             return state.carTypes
         }
-    }
+    } */
 }

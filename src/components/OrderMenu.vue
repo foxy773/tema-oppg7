@@ -1,7 +1,7 @@
 <template>
     <div class="order-menu">
         <div class="order-menu__car-name">
-            <h1>{{ car.carName }}</h1>
+            <h1>{{ selectedModel.carName }}</h1>
         </div>
         <div class="order-menu__car-specs">
             <ul class="car-specs__list">
@@ -59,7 +59,7 @@ export default {
     },
 
     props: {
-	    car: {
+	    selectedModel: {
             type: Object
         }
 	},
@@ -67,9 +67,9 @@ export default {
     data() {
 		return {
 			colors: [],
-            Range: this.car.typesOfCars[0].models.carRange,
-            TopSpeed: this.car.typesOfCars[0].models.carTopSpeed,
-            Torque: this.car.typesOfCars[0].models.carTorque
+            Range: this.selectedModel.typesOfCars[0].models.carRange,
+            TopSpeed: this.selectedModel.typesOfCars[0].models.carTopSpeed,
+            Torque: this.selectedModel.typesOfCars[0].models.carTorque
 		}
 	},
 
@@ -83,7 +83,7 @@ export default {
 
     methods: {
         getColors() {
-            const models = this.car.typesOfCars
+            const models = this.selectedModel.typesOfCars
             let colors = this.colors
             models.forEach((model)=> {
                 colors.push(model.color.color)
