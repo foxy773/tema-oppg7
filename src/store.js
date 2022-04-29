@@ -16,7 +16,9 @@ export default {
 			content: [],
 			cars: [],
 			selectedCar: [],
-			selectedColor: {color: null}
+			selectedColor: {color: null},
+			selectedModel: null,
+			selectedModelName: null
 		};
 	},
 
@@ -32,7 +34,20 @@ export default {
 
 		changeColor(state, data) {
 			state.selectedColor.color = data
+		},
+
+		selectedCar(state, data) {
+			state.selectedCar = data
+		},
+
+		changeModel(state, data) {
+			state.selectedModel = data
+		},
+
+		changeModelName(state, data) {
+			state.selectedModelName = data
 		}
+
 
 	},
 
@@ -44,6 +59,18 @@ export default {
 
 		changeColor({commit}, data) {
 			commit("changeColor", data)
+		},
+
+		changeModel({commit}, data) {
+			commit("changeModel", data)
+		},
+
+		changeModelName({commit}, data) {
+			commit("changeModelName", data)
+		},
+
+		addSelectedCar({commit}, data) {
+			commit("selectedCar", data)
 		}
 	},
 
@@ -66,7 +93,31 @@ export default {
 
 		getSelectedColorLength(state) {
 			return state.selectedColor.color.length
+		},
+
+		getSelectedModel(state) {
+			return state.selectedModel
+		},
+
+		getSelectedCar(state) {
+			return state.selectedCar
+		},
+
+		getSelectedCarModels(state) {
+			return state.selectedCar.typesOfCars
+		},
+
+		getAllColors(state) {
+			return state.content.colors
+		},
+
+		getSelectedModelName(state) {
+			return state.selectedModelName
 		}
+
+		/* getAllColorNames(state) {
+			return state.content.colors.colorName
+		} */
 
 	},
 

@@ -1,6 +1,6 @@
 <template>
 	<div class="car-show" >
-        <img v-if="this.checkMenuLoaded" class="show__image" :src="selectedModel.carImage.asset.url" alt="">
+        <img v-if="this.getSelectedModel" class="show__image" :src="selectedModel.carImage.asset.url" alt="">
         <h2 v-else>Loading car...</h2>
 	</div>
 </template>
@@ -24,6 +24,10 @@ export default {
     computed: {
         getColor() {
             return this.$store.getters.getSelectedColor
+        },
+
+        getSelectedModel() {
+            return this.$store.getters.getSelectedModel //change
         },
 
         checkMenuLoaded() {

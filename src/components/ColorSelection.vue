@@ -2,15 +2,16 @@
 	<ul class="car-color__selection">
         <li 
             v-for="color in colors"
-            @click="selectColor(color.colorName)" 
+            @click="selectColor(color.colorName)"
             :id="color.colorName" 
             :class="{
                 'selection__item': colorSelected !== color.colorName,
                 'selection__item--selected': colorSelected === color.colorName 
             }">
-                <img :src="color.colorImage.asset.url" alt="">
-            </li>
+            <img :src="color.colorImage.asset.url" alt="">
+        </li>
     </ul>
+    <p class="color-text">{{ this.colorSelected }} - ${{ this.getSelectedModel.color.colorPrice.toLocaleString('en-US') }}</p>
 </template>
 
 <script scoped>
@@ -26,7 +27,7 @@ export default {
 	},
 
     mounted() {
-        
+        console.log(this.colors, "colors in color")
     },
 
     created() {
@@ -34,18 +35,17 @@ export default {
     },
 
     computed: {
-        /* storeColor() {
-            this.$store.dispatch("changeColor", this.colorSelected)
-            console.log(this.colorSelected)
-        } */
+        getSelectedModel() {
+            return this.$store.getters.getSelectedModel
+        }
     },
 
     methods: {
          selectColor(color) {
             this.colorSelected = color;
             this.$store.dispatch("changeColor", this.colorSelected)
+        }
     }
-}
 
     
 }
@@ -57,6 +57,7 @@ export default {
     display: flex;
     justify-content: space-between;
     list-style:none ;
+    padding: 0 0 1rem 0
 }
 
 .selection__item {
@@ -79,6 +80,10 @@ export default {
     width: 3.5rem;
     height: 3.5rem;
     border: 0.25rem solid var(--highlight);
+}
+
+.color-text {
+    align-self: center;
 }
 
 .selection__item--selected img{

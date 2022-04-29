@@ -6,4 +6,5 @@ export default [
 	{ name: 'home', path: '/', component: Home },
 	{ name: 'carPageView', path: '/:carPageSlug', component: CarPageView },
 	{ name: 'order', path: '/:carPageSlug/order', component: Order },
+	{ name: 'checkout', path: '/:carPageSlug/order/checkout', component: Order }
 ];
