@@ -1,31 +1,5 @@
 <template>
 	<CarDisplayTemplate :car="filterSlug()"/>
-<!-- <iframe id="background-video" src="https://www.youtube.com/embed/Z_YacdE9TXU?autoplay=1&controls=0&loop=1" frameborder="0"></iframe> -->
-	<!-- <video autoplay muted loop id="background-video">
-  		<source src="videos/car_homepage.mp4" type="video/mp4">
-	</video> -->
-	<!-- <img class="background-image" src="images/background_car.png" alt=""> -->
-	<!-- <div class="car-container">
-		<h1 class="car-container__name">Tempest</h1>
-
-		<div class="car-container__info">
-			<router-link :to="{path: 'order'}"> <button class="car-container__order-button">Order Now</button> </router-link>
-			<div class="car-container__specs">
-				<div class="specs__torque">
-					<p>3.8 s</p>
-					<p>0-100 kmh</p>
-				</div>
-				<div class="specs__torque">
-					<p>489 km</p>
-					<p>Range (WLTP)</p>
-				</div>
-				<div class="specs__torque">
-					<p>AWD</p>
-					<p>Duel Motor</p>
-				</div>
-			</div>
-		</div>
-	</div> -->
 </template>
 
 <script>
