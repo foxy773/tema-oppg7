@@ -3,7 +3,7 @@
     <CarShow :selectedModel="filterShowCar" />
     <OrderMenu class="menu" :selectedCar="filterCars" :selectedModel="filterShowCar" />
     <div class="order__price-window" v-if="getSelectedModel">
-      <h2>Price</h2>
+      <h2>Total Price</h2>
       <p>${{ this.calculateTotalPrice }}</p>
     </div>
   </div>
@@ -119,6 +119,10 @@ export default {
   background: var(--foreground);
   padding: 1rem 2rem;
   border-radius: 0 1rem 0 0;
+}
+
+.order__price-window {
+  font-weight: 500;
 }
 
 .order__price-window > * {

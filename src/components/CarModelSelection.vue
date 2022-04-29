@@ -5,11 +5,11 @@
         </div>
             <li class="selection__item"
             v-for="model in filterCarModels">
-            <button @click="selectModel(model.cartypename)"
+            <button @click="selectModel(model.modelTypes.cartypename)"
             :class="{
-            'item__button': modelSelected !== model.cartypename,
-            'item__button--selected': modelSelected === model.cartypename
-            }"> {{ model.cartypename }} </button>
+            'item__button': modelSelected !== model.modelTypes.cartypename,
+            'item__button--selected': modelSelected === model.modelTypes.cartypename
+            }"> <p>{{ model.modelTypes.cartypename }}</p> <p>${{model.carTypePrice.toLocaleString("en-US")}}</p></button>
         </li>
     </ul>
 </template>
@@ -45,7 +45,8 @@ export default {
                     return JSON.stringify(obj.models.modelTypes.cartypename) === _value
                 }) 
             })
-            const finalResult = result.map((models => models.models.modelTypes))
+            const finalResult = result.map((models => models.models))
+            console.log(finalResult, "jeff")
             return finalResult
         },
 
@@ -65,8 +66,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 .car-type__selection {
     /* height: 15rem; */
     width: 100%;
@@ -101,6 +100,9 @@ export default {
 .item__button {
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     border: none;
     background: var(--foreground);
     color: var(--background);
@@ -118,7 +120,9 @@ export default {
 .item__button--selected {
     width: 100%;
     height: 100%;
-
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     font-family: var(--font-family);
     font-size: 1rem;
     font-style: bolder;

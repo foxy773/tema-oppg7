@@ -11,7 +11,7 @@
             <img :src="color.colorImage.asset.url" alt="">
         </li>
     </ul>
-    <p class="color-text">{{ this.colorSelected }} - ${{ this.getSelectedModel.color.colorPrice.toLocaleString('en-US') }}</p>
+    <p v-if="getSelectedModel"  class="color-text">{{ this.paintPrice }}</p>
 </template>
 
 <script scoped>
@@ -37,6 +37,13 @@ export default {
     computed: {
         getSelectedModel() {
             return this.$store.getters.getSelectedModel
+        },
+
+        paintPrice() {
+            const colorName = this.colorSelected
+            const colorPrice = this.getSelectedModel.color.colorPrice
+            const colorNamePrice = `${colorName} - $${colorPrice}`
+            return colorNamePrice
         }
     },
 
